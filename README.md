@@ -2,7 +2,13 @@
 
 
 This project consists of a web scraper for collecting product data from Trendyol's mobile phone category, followed by a data cleaning process, and visualizations of the scraped and cleaned data. The scraping, cleaning, and visualization processes are handled by different Python modules, and the results can be analyzed using Streamlit for interactive data exploration.
-####Project Link : http://3.73.85.0:8501
+
+## Project Link
+
+You can access the project at the following link:
+
+[http://3.73.85.0:8501](http://3.73.85.0:8501)
+
 
 ## Project Structure
 
