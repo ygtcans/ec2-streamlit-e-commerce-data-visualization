@@ -15,7 +15,6 @@ This project consists of a web scraper for collecting product data from Trendyol
 ├── data/
 │   └── raw_data.csv             # Raw scraped data (generated during scraping)
 ├── requirements.txt             # List of required packages
-├── run_project_on_ec2.sh
 └── README.md                    # This file
 ```
 
