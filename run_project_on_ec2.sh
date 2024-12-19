@@ -32,10 +32,10 @@ read -p "Choose an option (1/2): " RUN_OPTION
 
 if [ "$RUN_OPTION" -eq 1 ]; then
     echo "Starting the Streamlit app temporarily..."
-    python -m streamlit run app.py
+    python3 -m streamlit run src/streamlit_data_visualization.py
 elif [ "$RUN_OPTION" -eq 2 ]; then
     echo "Starting the Streamlit app permanently in the background..."
-    nohup python -m streamlit run app.py &
+    nohup python3 -m streamlit run src/streamlit_data_visualization.py &
     echo "App is now running in the background. Use 'ps aux | grep streamlit' to find the process."
 else
     echo "Invalid option. Exiting."
