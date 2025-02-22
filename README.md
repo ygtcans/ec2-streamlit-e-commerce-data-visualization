@@ -1,4 +1,4 @@
-This README.md a bit old :) I will update soon :)
+This README.md a bit old :) I will update it soon :)
 # E-Commerce Data Visualization with Streamlit Hosted on AWS EC2
 
 
