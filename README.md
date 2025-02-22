@@ -1,4 +1,4 @@
-This repo README.md a bit old :)
+This README.md a bit old :) I will update soon :)
 # E-Commerce Data Visualization with Streamlit Hosted on AWS EC2
 
 
