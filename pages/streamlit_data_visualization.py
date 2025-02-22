@@ -1,16 +1,30 @@
 import streamlit as st
-import os
-import pandas as pd
 import plotly.express as px
-from trendyol_scraper import TrendyolScraper
-from cleaner import DataCleaner
+import sys
+import os
 import tempfile
-import shutil
 import seaborn as sns
 import matplotlib.pyplot as plt
+import streamlit.components.v1 as components
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from src.trendyol_scraper import TrendyolScraper
+from src.cleaner import DataCleaner
+
+
 
 # Configure the Streamlit page
 st.set_page_config(page_title="Trendyol Data Visualization", page_icon= "assets/favicon.png" ,layout="wide")
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebarNav"] {
+            display: none
+        }
+
+
+    </style>
+    """, unsafe_allow_html=True)
 
 # Sidebar for page selection
 page = st.sidebar.selectbox("Select Page", ["Data Visualization", "Cleaned Data"])
@@ -32,21 +46,24 @@ max_pages = st.sidebar.number_input(
 button_style = """ 
     <style>
         .stButton > button {
-            background-color: #1abc9c;
+            background-color: #2e2d2d;
             color: white;
             font-size: 16px;
             border-radius: 10px;
             padding: 10px 20px;
+            width: 125px;
         }
         .stButton > button:hover {
-            background-color: #16a085;
+            background-color: #191919;
+            color: white;
         }
     </style>
 """
+
 st.markdown(button_style, unsafe_allow_html=True)
 
 # Add a scraping button to the sidebar
-if st.sidebar.button("Collect Data"):
+if st.sidebar.button("Collect Data", type="tertiary"):
     st.sidebar.info("Starting the scraping process...")
 
     # Create a temporary directory for raw data storage
@@ -59,8 +76,8 @@ if st.sidebar.button("Collect Data"):
 
     # If scraping is successful, move to data cleaning
     if os.path.exists(output_file):
-        st.sidebar.success("Scraping completed. Cleaning data...")
-
+        st.sidebar.success("Scraping completed.")
+        st.sidebar.info("Cleaning data...")    
         # Initialize the data cleaner and clean the scraped data
         cleaner = DataCleaner(output_file)
         cleaned_data = cleaner.clean()
@@ -70,6 +87,33 @@ if st.sidebar.button("Collect Data"):
             
             # Save cleaned data to the session state
             st.session_state.cleaned_data = cleaned_data
+
+go_to_home_button = st.button("Go to home", key="custom_btn", type="tertiary")
+
+go_to_home_style = """
+    <script>
+        var buttons = window.parent.document.querySelectorAll('button');
+        buttons.forEach((btn) => {
+            if (btn.innerText.includes("Go to home")) { 
+                btn.style.position = "fixed"; 
+                btn.style.bottom = "20px"; 
+                btn.style.right = "20px"; 
+                btn.style.backgroundColor = "#2e2d2d"; 
+                btn.style.color = "white"; 
+                btn.style.fontSize = "16px";
+                btn.style.borderRadius = "10px"; 
+                btn.style.padding = "10px 20px";
+                btn.style.boxShadow = "2px 2px 10px rgba(0, 0, 0, 0.2)";
+                btn.style.zIndex = "1000";
+            }
+        });
+    </script>
+"""
+components.html(go_to_home_style, height=0, width=0)
+
+# 3. Buton aksiyonları
+if go_to_home_button:
+    st.switch_page("app.py")
 
 # Display content based on the selected page
 if page == "Data Visualization":

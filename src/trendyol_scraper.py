@@ -43,7 +43,7 @@ class TrendyolScraper:
                 product_desc = product.select_one("div.product-desc-sub-text")
                 rating_score = product.select_one("span.rating-score")
                 ratings = product.select_one("div.ratings")
-                price = product.select_one("div.prc-box-dscntd")
+                price = product.select_one("div.price-item.discounted")
 
                 brand = brand.text.strip() if brand else None
                 product_name = product_name.text.strip() if product_name else None
