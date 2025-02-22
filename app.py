@@ -68,8 +68,27 @@ col1, col2, col3 = st.columns([1, 0.15,  1])
 # First column (Introduce yourself and list your project)
 with col1:
     st.header("About Me")
-    st.write("Hello, I'm Yiğitcan Dursun. I'm a Software Engineer and Data Engineer with a passion for solving problems through technology and continuously learning new things. I graduated from the Software Engineering department at Kırklareli University with a GPA of 3.78 out of 4, and during my internships at Luxoft, I gained valuable experience in Python, SQL, AWS, and various data engineering tools.In addition to my technical skills, I enjoy staying up to date with the latest developments in the tech world and continuously discovering new concepts. I also had the opportunity to study abroad in Poland through the Erasmus+ program, where I completed the semester with a GPA of 4.90 out of 5. This experience contributed greatly to both my personal and professional growth.If you’d like to get in touch with me, feel free to reach out anytime.")
+    st.text("Hello, I'm Yiğitcan Dursun. I'm a Software Engineer and Data Engineer with a passion for solving problems through technology and continuously learning new things. I graduated from the Software Engineering department at Kırklareli University with a GPA of 3.78 out of 4, and during my internships at Luxoft, I gained valuable experience in Python, SQL, AWS, and various data engineering tools.\n\nIn addition to my technical skills, I enjoy staying up to date with the latest developments in the tech world and continuously discovering new concepts. I also had the opportunity to study abroad in Poland through the Erasmus+ program, where I completed the semester with a GPA of 4.90 out of 5. This experience contributed greatly to both my personal and professional growth.\n\nIf you’d like to get in touch with me, feel free to reach out anytime.")
+    
+    linkedin_url = "https://www.linkedin.com/in/yigitcandursun/"
+    linkedin_icon = "https://upload.wikimedia.org/wikipedia/commons/8/83/Cib-linkedin_%28CoreUI_Icons_v1.0.0%29.svg"
 
+    github_url = "https://github.com/ygtcans"
+    github_icon = "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+
+    st.markdown(
+        f"""
+        <div style="display: flex; gap: 10px;">
+            <a href="{linkedin_url}" target="_blank">
+                <img src="{linkedin_icon}" width="35" height="35">
+            </a>
+            <a href="{github_url}" target="_blank">
+                <img src="{github_icon}" width="35" height="35">
+            </a>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     # Separator after Introduction
     st.html(
     '''
@@ -78,7 +97,7 @@ with col1:
             .divider-horizontal-line {
                 border-top: 2px solid rgba(49, 51, 63, 0.2);
                 width: 100%;  /* Full width */
-                margin: auto;
+                margin-top: 16px;
             }
         </style>
     ''')
